@@ -1,0 +1,33 @@
+text,study_hours,sleep_hours,mood,burnout
+"I feel relaxed and confident 😊",4,7,5,Healthy
+"Studying a lot but feeling tired 😐",7,6,3,Moderate
+"I am exhausted and stressed 😭",9,4,2,Burnout
+"Everything feels overwhelming 😰",8,5,2,Burnout
+"Doing okay managing studies 🙂",5,7,4,Healthy
+"Feeling pressure but coping 😕",6,6,3,Moderate
+"Feeling energized and focused 💪",6,8,5,Healthy
+"Can't focus, too much going on 😵",10,5,1,Burnout
+"Balanced day with good rest 😌",5,8,4,Healthy
+"Stressed about exams but managing 😟",7,6,3,Moderate
+"Completely drained, need a break 😴",11,4,1,Burnout
+"Feeling positive about my progress 😀",4,7,5,Healthy
+"Overwhelmed with assignments 😩",9,5,2,Burnout
+"Steady pace, feeling good 🙂",5,7,4,Healthy
+"Some stress but handling it 😊",6,6,4,Moderate
+"Exhausted from all-nighters 😪",12,3,1,Burnout
+"Relaxed weekend vibes 🌟",2,9,5,Healthy
+"Deadline pressure mounting 😰",8,5,2,Burnout
+"Good balance of work and rest 😎",5,8,4,Healthy
+"Feeling anxious about grades 😬",7,6,3,Moderate
+"Total burnout, can't continue 😭",10,4,1,Burnout
+"Productive day with enough sleep 💤",6,7,4,Healthy
+"Juggling too many things 😵‍💫",9,5,2,Burnout
+"Feeling calm and collected 🧘",4,8,5,Healthy
+"Moderate stress levels 😕",6,6,3,Moderate
+"Need to recharge, too tired 😴",8,4,2,Burnout
+"Excited about learning new things 📚",5,7,4,Healthy
+"Feeling the weight of expectations 😞",7,6,3,Moderate
+"Can't keep up, completely overwhelmed 😰",11,4,1,Burnout
+"Peaceful and focused mindset ✨",3,8,5,Healthy
+"Some challenges but staying positive 😊",6,7,4,Moderate
+"Exhausted beyond belief 😵",10,3,1,Burnout
