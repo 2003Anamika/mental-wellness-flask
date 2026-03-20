@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Wellness Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Dark Mode Toggle Button -->
+<button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">
+    🌙
+</button>
+
+<div class="container">
+    <div class="card">
+        <h1>🧠 Mental Wellness Checker</h1>
+        <p class="subtitle">Understand your stress & burnout level with personalized insights</p>
+
+        <form method="POST" class="form-container">
+            <div class="input-group">
+                <label for="text">How do you feel today? Share your thoughts...</label>
+                <textarea name="text" id="text" placeholder="I'm feeling a bit overwhelmed with studies..." required></textarea>
+            </div>
+
+            <div class="numeric-inputs">
+                <div class="input-group">
+                    <label for="study">Study hours per day</label>
+                    <input type="number" name="study" id="study" step="0.1" placeholder="8.5" required>
+                </div>
+                <div class="input-group">
+                    <label for="sleep">Sleep hours per day</label>
+                    <input type="number" name="sleep" id="sleep" step="0.1" placeholder="7.0" required>
+                </div>
+                <div class="input-group">
+                    <label for="mood">Mood (1-5)</label>
+                    <input type="number" name="mood" id="mood" min="1" max="5" placeholder="3" required>
+                </div>
+            </div>
+
+            <button type="submit">Analyze My Wellness</button>
+        </form>
+
+        {% if result %}
+        <div class="results-grid">
+            <div class="result">
+                <h2>Status: {{ result }} {{ emoji }}</h2>
+                <p><strong>Quick Advice:</strong> {{ suggestion }}</p>
+            </div>
+        </div>
+
+        {% if text_advice %}
+        <div class="results-grid">
+            <div class="advice-section">
+                <h3>💭 Based on what you shared:</h3>
+                <ul>
+                    {% for advice in text_advice %}
+                    <li>{{ advice }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if recommendations %}
+        <div class="results-grid">
+            <div class="recommendations-section">
+                <h3>🎯 Personalized Recommendations:</h3>
+                <ul>
+                    {% for rec in recommendations %}
+                    <li>{{ rec }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if activities %}
+        <div class="results-grid">
+            <div class="activities-section">
+                <h3>🌟 Suggested Activities:</h3>
+                <ul>
+                    {% for activity in activities %}
+                    <li>{{ activity }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if quote %}
+        <div class="results-grid">
+            <div class="quote-section">
+                <h3>💪 Daily Inspiration:</h3>
+                <blockquote>{{ quote }}</blockquote>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if timetable %}
+        <div class="results-grid">
+            <div class="timetable-section">
+                <h3>📅 Daily Wellness Timetable:</h3>
+                <table class="timetable-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Activity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in timetable %}
+                        <tr>
+                            <td>{{ item.time }}</td>
+                            <td>{{ item.activity }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    body.setAttribute('data-theme', currentTheme);
+    updateToggleIcon(currentTheme);
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateToggleIcon(newTheme);
+
+        // Add a subtle animation effect
+        themeToggle.style.transform = 'scale(1.2) rotate(360deg)';
+        setTimeout(() => {
+            themeToggle.style.transform = '';
+        }, 300);
+    });
+
+    function updateToggleIcon(theme) {
+        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+        themeToggle.title = theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+    }
+
+    // Smooth scroll to results when form is submitted
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function() {
+        setTimeout(() => {
+            const resultElement = document.querySelector('.result');
+            if (resultElement) {
+                resultElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }, 100);
+    });
+
+    // Add focus effects for better accessibility
+    const inputs = document.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+
+        input.addEventListener('blur', function() {
+            this.parentElement.classList.remove('focused');
+        });
+    });
+
+    // Add loading state to button
+    form.addEventListener('submit', function() {
+        const button = document.querySelector('button[type="submit"]');
+        button.textContent = 'Analyzing...';
+        button.disabled = true;
+
+        // Re-enable after a short delay (in case of client-side validation)
+        setTimeout(() => {
+            button.disabled = false;
+            button.textContent = 'Analyze My Wellness';
+        }, 2000);
+    });
+});
+</script>
+
+</body>
+</html>
