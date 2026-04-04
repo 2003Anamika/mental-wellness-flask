@@ -1,33 +1,72 @@
-text,study_hours,sleep_hours,mood,burnout
-"I feel relaxed and confident 😊",4,7,5,Healthy
-"Studying a lot but feeling tired 😐",7,6,3,Moderate
-"I am exhausted and stressed 😭",9,4,2,Burnout
-"Everything feels overwhelming 😰",8,5,2,Burnout
-"Doing okay managing studies 🙂",5,7,4,Healthy
-"Feeling pressure but coping 😕",6,6,3,Moderate
-"Feeling energized and focused 💪",6,8,5,Healthy
-"Can't focus, too much going on 😵",10,5,1,Burnout
-"Balanced day with good rest 😌",5,8,4,Healthy
-"Stressed about exams but managing 😟",7,6,3,Moderate
-"Completely drained, need a break 😴",11,4,1,Burnout
-"Feeling positive about my progress 😀",4,7,5,Healthy
-"Overwhelmed with assignments 😩",9,5,2,Burnout
-"Steady pace, feeling good 🙂",5,7,4,Healthy
-"Some stress but handling it 😊",6,6,4,Moderate
-"Exhausted from all-nighters 😪",12,3,1,Burnout
-"Relaxed weekend vibes 🌟",2,9,5,Healthy
-"Deadline pressure mounting 😰",8,5,2,Burnout
-"Good balance of work and rest 😎",5,8,4,Healthy
-"Feeling anxious about grades 😬",7,6,3,Moderate
-"Total burnout, can't continue 😭",10,4,1,Burnout
-"Productive day with enough sleep 💤",6,7,4,Healthy
-"Juggling too many things 😵‍💫",9,5,2,Burnout
-"Feeling calm and collected 🧘",4,8,5,Healthy
-"Moderate stress levels 😕",6,6,3,Moderate
-"Need to recharge, too tired 😴",8,4,2,Burnout
-"Excited about learning new things 📚",5,7,4,Healthy
-"Feeling the weight of expectations 😞",7,6,3,Moderate
-"Can't keep up, completely overwhelmed 😰",11,4,1,Burnout
-"Peaceful and focused mindset ✨",3,8,5,Healthy
-"Some challenges but staying positive 😊",6,7,4,Moderate
-"Exhausted beyond belief 😵",10,3,1,Burnout
+text,study_hours, screen_time,sleep_hours,mood,burnout
+"I feel relaxed and confident 😊",4,3,7,5,Healthy
+"Studying a lot but feeling tired 😐",7,4,6,3,Moderate
+"I am exhausted and stressed 😭",9,6,4,2,Burnout
+"Everything feels overwhelming 😰",8,7,5,2,Burnout
+"Doing okay managing studies 🙂",5,2,7,4,Healthy
+"Feeling pressure but coping 😕",6,4,6,3,Moderate
+"Feeling energized and focused 💪",6,3,8,5,Healthy
+"Can't focus, too much going on 😵",10,8,5,1,Burnout
+"Balanced day with good rest 😌",5,2.5,8,4,Healthy
+"Stressed about exams but managing 😟",7,3.5,6,3,Moderate
+"Completely drained, need a break 😴",11,9,4,1,Burnout
+"Feeling positive about my progress 😀",4,1.5,7,5,Healthy
+"Overwhelmed with assignments 😩",9,7.8,5,2,Burnout
+"Steady pace, feeling good 🙂",5,2.8,7,4,Healthy
+"Some stress but handling it 😊",6,3.9,6,4,Moderate
+"Exhausted from all-nighters 😪",12,10,3,1,Burnout
+"Relaxed weekend vibes 🌟",2,3,9,5,Healthy
+"Deadline pressure mounting 😰",8,6.5,5,2,Burnout
+"Good balance of work and rest 😎",5,2.7,8,4,Healthy
+"Feeling anxious about grades 😬",7,4.5,6,3,Moderate
+"Total burnout, can't continue 😭",10,8.8,4,1,Burnout
+"Productive day with enough sleep 💤",6,3.2,7,4,Healthy
+"Juggling too many things 😵‍💫",9,8,5,2,Burnout
+"Feeling calm and collected 🧘",4,2,8,5,Healthy
+"Moderate stress levels 😕",6,3,6,3,Moderate
+"Need to recharge, too tired 😴",8,7,4,2,Burnout
+"Excited about learning new things 📚",5,3,7,4,Healthy
+"Feeling the weight of expectations 😞",7,4,6,3,Moderate
+"Can't keep up, completely overwhelmed 😰",11,9,4,1,Burnout
+"Peaceful and focused mindset ✨",3,3.7,8,5,Healthy
+"Some challenges but staying positive 😊",6,4,7,4,Moderate
+"Exhausted beyond belief 😵",10,7,3,1,Burnout
+"feeling great 😊",6,4,7,8,Healthy
+"happy and energetic 😄",7,5,8,9,Healthy
+"productive day 💪",8,4,7,8,Healthy
+"very focused 🎯",7,4.5,8,9,Healthy
+"motivated and calm 🌿",6,3.5,7,8,Healthy
+"positive vibes ✨",7,5,8,9,Healthy
+"good balance ⚖️",6,4,8,8,Healthy
+"peaceful and happy 🧘",5,4.5,7,8,Healthy
+"energetic and fresh 🌞",7,3.5,8,9,Healthy
+"high productivity 🚀",8,5,7,8,Healthy
+"great mindset 🧠",6,4,7,9,Healthy
+"active and healthy 🏃",7,4.5,8,8,Healthy
+"feeling awesome 😍",6,3.5,7,9,Healthy
+"average day 😐",5,3,6,5,Moderate
+"doing okay 🙂",4,2.5,6,6,Moderate
+"manageable stress 😌",6,2,7,5,Moderate
+"little tired but fine 😴",5,2.8,6,5,Moderate
+"normal routine 📅",6,3,7,6,Moderate
+"balanced but sleepy 😪",5,2.5,6,5,Moderate
+"somewhat productive 👍",6,3,7,6,Moderate
+"slightly stressed 😕",5,2.8,6,5,Moderate
+"neutral feeling 😶",4,2,7,6,Moderate
+"okay mood 🙂",5,2.5,6,5,Moderate
+"regular day 📘",6,3,7,6,Moderate
+"calm and normal 🌸",5,2.2,7,6,Moderate
+"manageable workload 📊",6,2.5,6,5,Moderate
+"feeling very tired 😫",2,8,4,3,Burnout
+"completely exhausted 😩",3,9,5,2,Burnout
+"too much screen usage 📱😵",4,7,5,3,Burnout
+"mentally drained 🧠💤",5,8,4,2,Burnout
+"low energy today 😞",2,7,3,3,Burnout
+"can't concentrate 😵",3,9,4,2,Burnout
+"stressed and tired 😰",4,8,5,3,Burnout
+"overworked and sleepy 😓",6,7,5,3,Burnout
+"burned out completely 🔥😖",5,9,4,2,Burnout
+"no motivation 😔",2,8,4,3,Burnout
+"heavy workload 📚😫",7,7,5,4,Burnout
+"feeling overwhelmed 😣",6,8,5,3,Burnout
+"too much study pressure 📖😖",8,7,5,3,Burnout
