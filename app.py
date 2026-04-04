@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import StandardScaler
 import numpy as np
 import random
 import re
@@ -11,6 +12,7 @@ app = Flask(__name__)
 
 # Load dataset
 data = pd.read_csv("wellness_dataset.csv")
+data.columns = data.columns.str.strip().str.lower().str.replace(' ', '_')
 
 # Encode target
 le = LabelEncoder()
@@ -21,12 +23,17 @@ vectorizer = TfidfVectorizer()
 text_features = vectorizer.fit_transform(data['text'])
 
 # Combine numerical features
-numerical_features = data[['study_hours', 'sleep_hours', 'mood']].values
+numerical_features = data[['study_hours', 'sleep_hours', 'screen_time','mood']].values
+scaler = StandardScaler()  
+numerical_features = scaler.fit_transform(numerical_features)
 X = np.hstack((text_features.toarray(), numerical_features))
 y = data['burnout']
 
+
+
+
 # Train model
-model = LogisticRegression()
+model = RandomForestClassifier(n_estimators=100)
 model.fit(X, y)
 
 # Enhanced advice system
@@ -61,7 +68,7 @@ def analyze_text_for_keywords(text):
 
     return advice
 
-def get_personalized_recommendations(study_hours, sleep_hours, mood, burnout_level):
+def get_personalized_recommendations(study_hours, screen_time, sleep_hours, mood, burnout_level):
     """Generate personalized recommendations based on input metrics"""
     recommendations = []
 
@@ -72,6 +79,14 @@ def get_personalized_recommendations(study_hours, sleep_hours, mood, burnout_lev
         recommendations.append("💤 You're getting some sleep, but could benefit from more rest. Try winding down earlier.")
     else:
         recommendations.append("✅ Good sleep habits! Keep maintaining your sleep schedule.")
+    
+    # screentime recommendations    
+    if screen_time > 6:
+        recommendations.append("📱 Limit screen time, especially before bed. Try the 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds.")
+    elif screen_time > 3:
+        recommendations.append("⌚ Moderate screen time. Be mindful of your usage and take breaks regularly.")
+    else:
+        recommendations.append("✅ Balanced screen time! Keep up the good work.")
 
     # Study hours recommendations
     if study_hours > 10:
@@ -153,11 +168,13 @@ def index():
     if request.method == "POST":
         text = request.form["text"]
         study = float(request.form["study"])
+        screen_time = float(request.form["screen_time"])
         sleep = float(request.form["sleep"])
         mood = float(request.form["mood"])
 
         text_vec = vectorizer.transform([text]).toarray()
-        final_input = np.hstack((text_vec, [[study, sleep, mood]]))
+        num_input = scaler.transform([[study, sleep, screen_time, mood]])
+        final_input = np.hstack((text_vec, num_input))
 
         prediction = model.predict(final_input)[0]
         label = le.inverse_transform([prediction])[0]
@@ -192,7 +209,7 @@ def index():
         }[label]
 
         text_advice = analyze_text_for_keywords(text)
-        recommendations = get_personalized_recommendations(study, sleep, mood, label)
+        recommendations = get_personalized_recommendations(study, screen_time,sleep, mood, label)
         activities = get_activity_suggestions(label)
         quote = get_motivational_quote()
 
